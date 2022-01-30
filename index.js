@@ -89,6 +89,7 @@ function makeConfirmButtonWork() {
     document.getElementById("confirm-btn").addEventListener("click", function() {
         
     if (difficultySelect === 0 && lifeSelect === 0) {
+        // limit difficulty to 9 digits max
         if (selection.length === 1) {
             difficultySelect = selection;
             console.log(difficultySelect)
