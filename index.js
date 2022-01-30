@@ -1,10 +1,10 @@
-
+var selectionEl = document.querySelector("#selection-el");
 var messageEl = document.querySelector("#message-el");
 var isAlive = false;
 var difficultySelect = false;
 var i;
 var selection = []
-var selectionEl;
+
 
 
 
@@ -17,13 +17,11 @@ function startGame() {
     startGameBtn.remove();
 
     // Replace message to prompt for number of digits
-    messageEl.textContent = "Select the number of digits you wish to guess: ";
+    messageEl.textContent = "Select the number of digits you wish to guess";
     
      // Add the display for numbers
-    var display = document.createElement("p");
-    display.innerText = selection;
-    display.id = "selection-el";
-    document.getElementById("number-display").appendChild(display)
+    selectionEl.textContent = "choice: ";
+  
     
 
      
@@ -37,44 +35,50 @@ function startGame() {
     }
     
     
+    
+   
+    
     var deleteBtn = document.createElement("button")
-        deleteBtn.innerHTML =  "DELETE";
+        deleteBtn.innerHTML = "DELETE";
         deleteBtn.id = "delete-btn";
-        document.getElementById("new-buttons").appendChild(deleteBtn);
+        document.getElementById("DC-buttons").appendChild(deleteBtn);
         
     var confirmBtn = document.createElement("button")
         confirmBtn.innerHTML =  "CONFIRM";
         confirmBtn.id = "confirm-btn";
-        document.getElementById("new-buttons").appendChild(confirmBtn);
+        document.getElementById("DC-buttons").appendChild(confirmBtn);
      
     
    
-    makeButtonsWork
-    
-}
-
-function makeButtonsWork() {
-
-  // When the button is clicked, the number will appear on the display
-        document.getElementById(1 + "-btn").addEventListener("click", function() {
-            selection.push(1);
-            selectionEl = document.getElementById("selection-el");
-            selectionEl.innerHTML = selection;
-        })}
-        document.getElementById(1 + "-btn").addEventListener("click", function() {
-            selection.push(1);
-            selectionEl = document.getElementById("selection-el");
-            selectionEl.innerHTML = selection;
-        })}
-        document.getElementById(1 + "-btn").addEventListener("click", function() {
-            selection.push(1);
-            selectionEl = document.getElementById("selection-el");
-            selectionEl.innerHTML = selection;
-        })}
-
+        makeNumberButtonWork(1)
+        makeNumberButtonWork(2)
+        makeNumberButtonWork(3)
+        makeNumberButtonWork(4)
+        makeNumberButtonWork(5)
+        makeNumberButtonWork(6)
+        makeNumberButtonWork(7)
+        makeNumberButtonWork(8)
+        makeNumberButtonWork(9)
         
-
-
+        
+    }
     
-}
+    function makeNumberButtonWork(btnNumber) {
+    
+      // When the button is clicked, the number will appear on the display
+        document.getElementById(btnNumber + "-btn").addEventListener("click", function() {
+            selection.push(btnNumber);
+            selectionEl.innerText = "choice: ";
+                for (var i = 0; i < selection.length; i++) {
+                selectionEl.innerText += selection[i] + " ";}})
+            
+    }
 
+    function makeDeleteButtonWork() {
+        document.getElementById("delete-btn").addEventListener("click", function() {
+        selection.pop();
+        selectionEl.innerText = "choice: ";
+            for (var i = 0; i < selection.length; i++) {
+            selectionEl.innerText += selection[i] + " ";}})
+        
+}
