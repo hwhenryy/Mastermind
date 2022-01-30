@@ -1,7 +1,7 @@
 var selectionEl = document.querySelector("#selection-el");
 var messageEl = document.querySelector("#message-el");
-var isAlive = false;
-var difficultySelect = false;
+var difficultySelect = 0;
+var lifeSelect = 0;
 var i;
 var selection = []
 
@@ -81,4 +81,23 @@ function startGame() {
             for (var i = 0; i < selection.length; i++) {
             selectionEl.innerText += selection[i] + " ";}})
         
+}
+
+function makeConfirmButtonWork() {
+
+    
+    document.getElementById("confirm-btn").addEventListener("click", function() {
+        
+    if (difficultySelect === 0 && lifeSelect === 0) {
+        if (selection.length === 1) {
+            difficultySelect = selection;
+            console.log(difficultySelect)
+            messageEl.innerText = "Select the number of lives you will possess";
+        }      
+    }
+    
+    
+    
+    
+   })
 }
