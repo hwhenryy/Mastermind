@@ -106,7 +106,8 @@ function makeConfirmButtonWork() {
             messageEl.innerText = "Select the number of lives you will possess";
             resetSelection();
 
-            maxRandomNumber = 10^difficultySelect-1
+            let difficultySelectInteger = convertArrayToInteger(difficultySelect);
+            maxRandomNumber = 10^difficultySelectInteger-1;
             randomNumber = generateRandomNumber(maxRandomNumber);
             debugEl.innerText = "function makeNumberConfirmButtonWork clause 1 executed, random number: " + randomNumber;
 
@@ -134,6 +135,8 @@ function makeConfirmButtonWork() {
 
 
         
+    } else if (difficultySelect != 0 && lifeSelect != 0) {
+        compareAnswers()
     }
       
    
@@ -143,6 +146,16 @@ function makeConfirmButtonWork() {
 function resetSelection() {
    selectionEl.textContent = "Choice: ";
    selection = []; 
+}
+
+function convertArrayToInteger(array) {
+
+    let integer = 0;
+    for (var i = 0; i < array.length; i++) {
+        integer += array[i]*10^(array.length-(i+1))
+    }
+
+    return integer;
 }
 
 function generateRandomNumber(maxRandomNumber) {
