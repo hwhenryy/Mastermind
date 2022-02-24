@@ -106,6 +106,7 @@ function makeConfirmButtonWork() {
             messageEl.innerText = "Select the number of lives you will possess";
             resetSelection();
 
+            maxRandomNumber = 10^difficultySelect-1
             randomNumber = generateRandomNumber(difficultySelect);
             debugEl.innerText = "function makeNumberConfirmButtonWork clause 1 executed" 
             
@@ -140,8 +141,7 @@ function resetSelection() {
    selection = []; 
 }
 
-function generateRandomNumber(digits) {
-    maxRandomNumber = 10^digits-1
+function generateRandomNumber(maxRandomNumber) {
     randomNumber = Math.floor(Math.random()*maxRandomNumber) + 1
     debugEl.innerText = "function generateRandomNumber executed"
     return randomNumber;
