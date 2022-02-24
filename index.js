@@ -107,7 +107,7 @@ function makeConfirmButtonWork() {
             resetSelection();
 
             let difficultySelectInteger = convertArrayToInteger(difficultySelect);
-            maxRandomNumber = 10^difficultySelectInteger-1;
+            maxRandomNumber = 10**difficultySelectInteger-1;
             randomNumber = generateRandomNumber(maxRandomNumber);
             debugEl.innerText = "function makeNumberConfirmButtonWork clause 1 executed, random number: " + randomNumber;
 
@@ -149,13 +149,14 @@ function resetSelection() {
 }
 
 function convertArrayToInteger(array) {
-
+    
     let integer = 0;
     for (var i = 0; i < array.length; i++) {
-        integer += array[i]*10^(array.length-(i+1))
+        integer += array[i]*(10**(array.length-1-i))
+       
     }
 
-    return integer;
+   return integer;
 }
 
 function generateRandomNumber(maxRandomNumber) {
