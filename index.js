@@ -1,11 +1,13 @@
 
 var selectionEl = document.querySelector("#selection-el");
 var messageEl = document.querySelector("#message-el");
+var debugEl = document.querySelector("#debug-el");
 var difficultySelect = 0;
 var lifeSelect = 0;
 var i;
 var selection = []
 var randomNumber;
+var maxRandomNumber;
 var randomNumberMatrix = []
 
 
@@ -75,6 +77,7 @@ function makeNumberButtonWork(btnNumber) {
         selectionEl.innerText = "Choice: ";
             for (var i = 0; i < selection.length; i++) {
             selectionEl.innerText += selection[i] + " ";}})
+            debugEl.innerText = "function makeNumberButtonWork executed" 
         
 }
 
@@ -84,9 +87,12 @@ function makeDeleteButtonWork() {
         selectionEl.innerText = "Choice: ";
             for (var i = 0; i < selection.length; i++) {
             selectionEl.innerText += selection[i] + " ";}})
+            debugEl.innerText = "function makeDeleteButtonWork executed" 
         
 }
 
+
+// make the confirm button work
 function makeConfirmButtonWork() {
 
     
@@ -96,12 +102,18 @@ function makeConfirmButtonWork() {
         if (selection.length === 1) {
             difficultySelect = selection;
             console.log(difficultySelect)
+
             messageEl.innerText = "Select the number of lives you will possess";
             resetSelection();
+
+            randomNumber = generateRandomNumber(difficultySelect);
+            debugEl.innerText = "function makeNumberConfirmButtonWork clause 1 executed" 
+            
             
         }  else {
             messageEl.innerText = "Select between 1-9 digits";
             resetSelection();
+            debugEl.innerText = "function makeNumberConfirmButtonWork clause 2 executed" 
         }   
     } else if (difficultySelect != 0 && lifeSelect === 0) {
         if (selection.length === 1) {
@@ -109,19 +121,17 @@ function makeConfirmButtonWork() {
             console.log(lifeSelect)
             messageEl.innerText = "Guess a " + difficultySelect + "-digit number";
             resetSelection();
+            debugEl.innerText = "function makeNumberConfirmButtonWork clause 3 executed" 
 
         }   else {
             messageEl.innerText = "Select between 1-9 lives";
             resetSelection();
+            debugEl.innerText = "function makeNumberConfirmButtonWork clause 4 executed" 
         }   
         
     }
-    
-    
-    
-    
-    
-   // final brackets 
+      
+   
    })
 }
 
@@ -131,8 +141,10 @@ function resetSelection() {
 }
 
 function generateRandomNumber(digits) {
-    let maxNumber = 10^digits-1
-    let randomNumber = Math.floor(Math.random()*maxNumber) + 1
-    console.log(randomNumber);
+    maxRandomNumber = 10^digits-1
+    randomNumber = Math.floor(Math.random()*maxRandomNumber) + 1
+    debugEl.innerText = "function generateRandomNumber executed"
+    return randomNumber;
+    
 
 }
