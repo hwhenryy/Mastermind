@@ -107,8 +107,9 @@ function makeConfirmButtonWork() {
             resetSelection();
 
             maxRandomNumber = 10^difficultySelect-1
-            randomNumber = generateRandomNumber(difficultySelect);
-            debugEl.innerText = "function makeNumberConfirmButtonWork clause 1 executed" 
+            randomNumber = generateRandomNumber(maxRandomNumber);
+            debugEl.innerText = "function makeNumberConfirmButtonWork clause 1 executed, random number: " + randomNumber;
+
             
             
         }  else {
@@ -122,13 +123,16 @@ function makeConfirmButtonWork() {
             console.log(lifeSelect)
             messageEl.innerText = "Guess a " + difficultySelect + "-digit number";
             resetSelection();
-            debugEl.innerText = "function makeNumberConfirmButtonWork clause 3 executed" 
+            debugEl.innerText = "function makeNumberConfirmButtonWork clause 3 executed"
+
 
         }   else {
             messageEl.innerText = "Select between 1-9 lives";
             resetSelection();
             debugEl.innerText = "function makeNumberConfirmButtonWork clause 4 executed" 
         }   
+
+
         
     }
       
@@ -143,7 +147,7 @@ function resetSelection() {
 
 function generateRandomNumber(maxRandomNumber) {
     randomNumber = Math.floor(Math.random()*maxRandomNumber) + 1
-    debugEl.innerText = "function generateRandomNumber executed"
+    // debugEl.innerText = "function generateRandomNumber executed"
     return randomNumber;
     
 
